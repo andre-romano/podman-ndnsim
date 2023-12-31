@@ -8,7 +8,7 @@ Github: https://github.com/andre-romano/podman-ndnsim
 
 To run NS3 simulations, just place your ns-3 path (git clone it) inside the ```./ns-3``` folder. 
 
-If you do not have an ./ns-3 folder, just create an empty ```./ns-3``` folder. The container will populate it automatically.
+If you do not have an ```./ns-3``` folder, just create an empty one. The container will populate it automatically.
 
 Place your simulation scenarios inside path ```./ns-3/scratch``` and run them with ```./waf``` command later. Each simulation scenario must have its own subpath inside the *scratch* folder.
 
