@@ -12,7 +12,7 @@ Place your simulation scenarios inside path ```./ns-3/scratch``` and run them wi
 
 There are two ways to start this container:
 
-### Option 1 - Using Docker CLI
+### Option 1 - Using Docker CLI (this method is faster to run the container)
 
 Run the container as follows:
 ```bash
@@ -20,18 +20,24 @@ mkdir -p ./ns-3
 docker run --rm -it -v ./ns-3:/ndnSIM/ns-3 docker.io/andreromano/ndnsim
 ```
 
-### Option 2 - Using Docker Compose
+### Option 2 - Using Docker Compose 
 
 Run the container as follows:
 ```bash
-docker compose run --rm ndnsim
+docker compose up ; docker compose down
 ```
 
 ## Container execution modes 
 
 ### Non-interactive mode
 
-To run the container in **non-interative mode**, provide a ```./ns-3/entrypoint.sh``` file. The container will run the commands in this file and terminate.
+To run the container in **non-interative mode**, provide a ```./ns-3/entrypoint.sh``` file. The container will run the commands in this file and terminate. Example:
+```bash
+cat > ./ns-3/entrypoint.sh <<EOF
+#!/bin/bash
+NS_LOG=ndn.Consumer ./waf --run='ndn-simple'
+EOF
+```
 
 ### Interactive mode
 
