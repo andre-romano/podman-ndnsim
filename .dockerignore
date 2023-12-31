@@ -1,0 +1,7 @@
+Dockerfile
+docker-compose.yaml
+./ns-3
+**/.gitignore
+**/.git
+**/.gitmodules
+**/*.md
