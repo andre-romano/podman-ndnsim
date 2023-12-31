@@ -4,4 +4,5 @@ services:
     image: docker.io/andreromano/ndnsim
     volumes:
       - ./ns-3:/ndnSIM/ns-3
-    attach: true
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
