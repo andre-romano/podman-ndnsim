@@ -1,0 +1,7 @@
+version: "3"
+services:
+  ndnsim:
+    image: docker.io/andreromano/ndnsim
+    volumes:
+      - ./ns-3:/ndnSIM/ns-3
+    attach: true
