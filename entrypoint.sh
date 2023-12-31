@@ -10,4 +10,4 @@ if [ -z "$(ls $MOUNTPOINT/ns-3)" ]; then
     ./waf configure -d debug --disable-python --enable-examples
 fi
 cd $MOUNTPOINT/ns-3
-/bin/bash
+/bin/bash $@
