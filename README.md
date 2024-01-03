@@ -35,10 +35,10 @@ docker compose up ; docker compose down
 
 To run the container in **non-interative mode**, provide a ```./ns-3/entrypoint.sh``` file. The container will run the commands in this file and terminate. Example:
 ```bash
-cat > ./ns-3/entrypoint.sh <<EOF
 #!/bin/bash
+echo "ENTRYPOINT - Simulation started!"
 NS_LOG=ndn.Consumer ./waf --run='ndn-simple'
-EOF
+echo "ENTRYPOINT - Simulation ended!"
 ```
 
 ### Interactive mode

@@ -1,21 +1,24 @@
 #!/bin/bash
+PYBINDGEN_PATH=/ndnSIM/pybindgen
+NS3_PATH=/ndnSIM/ns-3
 
-mkdir -p /ndnSIM/pybindgen
-mkdir -p /ndnSIM/ns-3
-cd /ndnSIM
-if [ -z "$( ls ./pybindgen )" ]; then  
-    git config --global http.version HTTP/1.1 && \
-    git clone -b 0.22.1 https://github.com/named-data-ndnSIM/pybindgen.git pybindgen 
+PYBINDGEN_BRANCH=0.22.1
+NS3_BRANCH=ndnSIM-ns-3.35
+NDNSIM_BRANCH=ndnSIM-2.9-NFD-22.02
+
+mkdir -p $NS3_PATH $PYBINDGEN_PATH
+if [ -z "$( ls $PYBINDGEN_PATH )" ]; then  
+    git config --global http.version HTTP/1.1 && 
+    git clone -b "$PYBINDGEN_BRANCH" https://github.com/named-data-ndnSIM/pybindgen.git "$PYBINDGEN_PATH"
 fi
-cd /ndnSIM
-if [ -z "$( ls ./ns-3 )" ]; then    
-    git config --global http.version HTTP/1.1 && \
-    git clone -b ndnSIM-ns-3.35                   https://github.com/named-data-ndnSIM/ns-3-dev.git  ns-3 && 
-    git clone -b ndnSIM-2.9-NFD-22.02 --recursive https://github.com/named-data-ndnSIM/ndnSIM.git    ns-3/src/ndnSIM &&     
-    cd ./ns-3 &&
+if [ -z "$( ls $NS3_PATH )" ]; then    
+    git config --global http.version HTTP/1.1 && 
+    git clone -b "$NS3_BRANCH"                https://github.com/named-data-ndnSIM/ns-3-dev.git  "$NS3_PATH" && 
+    git clone -b "$NDNSIM_BRANCH" --recursive https://github.com/named-data-ndnSIM/ndnSIM.git    "$NS3_PATH/src/ndnSIM" &&     
+    cd "$NS3_PATH" &&
     ./waf configure -d debug --enable-examples
 fi
-cd /ndnSIM/ns-3
+cd "$NS3_PATH" 
 if [ -e "./entrypoint.sh" ]; then    
     /bin/bash "./entrypoint.sh"
 else
