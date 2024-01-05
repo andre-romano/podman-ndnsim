@@ -6,11 +6,11 @@ Github: https://github.com/andre-romano/podman-ndnsim
 
 ## Starting Container
 
-To run NS3 simulations, just place your ns-3 path (git clone it) inside the ```./ns-3``` folder. 
+To run NS3 simulations, just place your ns-3 path (git clone it) inside the ```./ndnSIM/ns-3``` folder. 
 
-If you do not have an ```./ns-3``` folder, just create an empty one. The container will populate it automatically.
+If you do not have an ```./ndnSIM/ns-3``` folder, just create an empty one. The container will populate it automatically.
 
-Place your simulation scenarios inside path ```./ns-3/scratch``` and run them with ```./waf``` command later. Each simulation scenario must have its own subpath inside the *scratch* folder.
+Place your simulation scenarios inside path ```./ndnSIM/ns-3/scratch``` and run them with ```./waf``` command later. Each simulation scenario must have its own subpath inside the *scratch* folder.
 
 There are two ways to start this container:
 
@@ -33,17 +33,15 @@ docker compose up ; docker compose down
 
 ### Non-interactive mode
 
-To run the container in **non-interative mode**, provide a ```./ns-3/entrypoint.sh``` file. The container will run the commands in this file and terminate. Example:
+To run the container in **non-interative mode**, provide a ```./ndnSIM/ns-3/entrypoint.sh``` file. The container will run the commands in this file and terminate. Example:
 ```bash
-cat > ./ns-3/entrypoint.sh <<EOF
 #!/bin/bash
 NS_LOG=ndn.Consumer ./waf --run='ndn-simple'
-EOF
 ```
 
 ### Interactive mode
 
-If no ```./ns-3/entrypoint.sh``` file is provided, the container is executed in **interactive mode**.
+If no ```./ndnSIM/ns-3/entrypoint.sh``` file is provided, the container is executed in **interactive mode**.
 
 The container will provide a ```/bin/bash``` terminal that you can issue ```./waf``` commands as you normally would in Linux. You can also define or override any environment variables within the container's terminal. Check the example below:
 ```bash
