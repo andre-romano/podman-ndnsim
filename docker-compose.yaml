@@ -3,6 +3,6 @@ services:
   ndnsim:
     image: docker.io/andreromano/ndnsim
     volumes:
-      - ./ns-3:/ndnSIM/ns-3
+      - ./ndnSIM:/ndnSIM
     stdin_open: true # docker run -i
     tty: true        # docker run -t
